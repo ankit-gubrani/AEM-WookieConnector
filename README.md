@@ -6,17 +6,6 @@ This tool allows AEM users to use Apache wookie to fetch & display widgets hoste
 Widgets can not only include all the usual kinds of mini-applications, badges, and gadgets, but also fully-collaborative
  applications such as chats, quizzes, and games
 
-## Authors
-
-**Ankit gubrani**
-
-* [LinkedIn](https://in.linkedin.com/pub/ankit-gubrani/74/a75/56b "Ankit Gubrani")
-* [Twitter](https://twitter.com/ankitgubrani90)
-
-**Rima Mittal**
-*[LinkedIn](https://in.linkedin.com/pub/rima-mittal/13/92/501 "Rima Mittal")
-*[Twitter](https://twitter.com/rimamittal)
-
 ## Modules
 
 The main parts of the template are:
@@ -47,4 +36,23 @@ Or to deploy only the bundle to the author, run
     mvn clean install -PautoInstallBundle
 
 
+## Authors
+
+**_Ankit gubrani_**
+
+Contact Info :
+
+* [LinkedIn](https://in.linkedin.com/pub/ankit-gubrani/74/a75/56b "Ankit Gubrani")
+* [Twitter](https://twitter.com/ankitgubrani90)
+* [Blog](http://codebrains.blogspot.in/)
+* [Slideshare](http://www.slideshare.net/ankitgubrani/)
+* [Site](http://www.codebrains.co.in/ankitgubrani)
+
+**_Rima Mittal_**
+
+Contact Info :
+
+* [LinkedIn](https://in.linkedin.com/pub/rima-mittal/13/92/501 "Rima Mittal")
+* [Twitter](https://twitter.com/rimamittal)
+* [Blog](http://rimamittal.blogspot.in/)
 
