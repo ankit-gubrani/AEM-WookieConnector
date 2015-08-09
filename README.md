@@ -36,9 +36,9 @@ Or to deploy only the bundle to the author, run
     mvn clean install -PautoInstallBundle
 
 
-## Authors
+# Authors
 
-**_Ankit gubrani_**
+### **_Ankit gubrani_**
 
 Contact Info :
 
@@ -48,7 +48,7 @@ Contact Info :
 * [Slideshare](http://www.slideshare.net/ankitgubrani/)
 * [Site](http://www.codebrains.co.in/ankitgubrani)
 
-**_Rima Mittal_**
+### **_Rima Mittal_**
 
 Contact Info :
 
