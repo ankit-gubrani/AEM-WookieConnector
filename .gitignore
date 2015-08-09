@@ -1,0 +1,46 @@
+#gtignore
+
+# IDE support files
+/.classpath
+/.launch
+/.project
+/.settings
+/*.launch
+/*.tmproj
+/ivy*
+/eclipse
+
+# default HSQL database files for production mode
+/prodDb.*
+
+# general HSQL database files
+*Db.properties
+*Db.script
+
+# logs
+/stacktrace.log
+/logs
+
+# project release file
+/*.war
+
+# plugin release file
+/*.zip
+
+# "temporary" build files
+*/target
+target/*
+*target*
+*/target/*
+target*
+
+out/*
+*.iml
+.gradle/*
+*.ipr
+*.iws
+build/*
+
+.idea*
+
+mvn.log

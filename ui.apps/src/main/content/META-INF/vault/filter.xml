@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/wookie-aem">
+        <exclude pattern="/apps/wookie-aem/install" />
+    </filter>
+    <filter root="/apps/wookie-aem/httpcomponents-wookie_1.0.0.jar" />
+    <filter root="/apps/sling" />
+    <filter root="/etc/designs/wookie-aem"/>
+</workspaceFilter>
