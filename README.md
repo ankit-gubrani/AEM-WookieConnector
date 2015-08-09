@@ -35,4 +35,13 @@ Or to deploy only the bundle to the author, run
 
     mvn clean install -PautoInstallBundle
 
+##Authors
+
+**Ankit gubrani**
+[a LinkedIn link](https://in.linkedin.com/pub/ankit-gubrani/74/a75/56b)
+[a Twitter link](https://twitter.com/ankitgubrani90)
+
+**Rima Mittal**
+[a LinkedIn link](https://in.linkedin.com/pub/rima-mittal/13/92/501)
+[a Twitter link](https://twitter.com/rimamittal)
 
