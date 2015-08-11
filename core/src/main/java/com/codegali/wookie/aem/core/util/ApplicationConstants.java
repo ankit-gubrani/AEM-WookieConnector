@@ -75,6 +75,11 @@ public class ApplicationConstants {
     /**
      *
      */
+    public static final String INVALID_CONFIG_RESPONSE_KEY = "isServerConfigValid";
+
+    /**
+     *
+     */
     public static final String XML_CONTENT_TYPE_RESPONSE = "Content-Type: text/xml; charset=utf-8";
 
     /**
@@ -111,5 +116,20 @@ public class ApplicationConstants {
      *
      */
     public static final String USER_ID_REQUEST_PARAM = "userid";
+
+    /**
+     *
+     */
+    public static final String RESPOSE_STATUS_CODE = "status-code";
+
+    /**
+     *
+     */
+    public static final String IS_SERVER_RUNNING_RESPONSE_KEY = "isServerRunning";
+
+    /**
+     *
+     */
+    public static final String AEM_RESPONSE_MESSAGE_KEY = "message";
 
 }

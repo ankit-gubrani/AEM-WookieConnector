@@ -38,7 +38,7 @@ public class WookieClient {
      * @return Returns response in string
      */
     public Map makeGetRequest(final String apiUrl, final String queryParams) {
-        Map<String, String> responseMap = null;
+        Map<String, String> responseMap = new HashMap<String, String>();
         try {
             if (isConfigurationValid()) {
                 HttpClient httpClient = HttpClientBuilder.create().build();
@@ -54,7 +54,12 @@ public class WookieClient {
                 if (httpResponse != null && httpResponse.getStatusLine() != null) {
                     LOGGER.info("AEM-Wookie Connector : Client made Get call Status code is: " + httpResponse.getStatusLine().getStatusCode());
 
-                    if (httpResponse.getStatusLine().getStatusCode() != 200) {
+                    if(httpResponse.getStatusLine().getStatusCode() == 404) {
+                        responseMap.put(ApplicationConstants.RESPONSE_KEY, " Status code 404 ! Please check if Wookie server is up and running !");
+                        responseMap.put(ApplicationConstants.RESPOSE_STATUS_CODE,
+                                Integer.toString(httpResponse.getStatusLine().getStatusCode()));
+                        return responseMap;
+                    } else if (httpResponse.getStatusLine().getStatusCode() != 200) {
                         throw new RuntimeException("Failed : HTTP error code : "
                                 + httpResponse.getStatusLine().getStatusCode());
                     }
@@ -67,11 +72,11 @@ public class WookieClient {
                     while ((output = br.readLine()) != null) {
                         responseBuffer.append(output);
                     }
-
-                    responseMap = new HashMap<String, String>();
                     responseMap.put(ApplicationConstants.RESPONSE_KEY, responseBuffer.toString());
                     responseMap.put(ApplicationConstants.RESPONSE_FORMAT_KEY, httpResponse.getEntity().
                             getContentType().toString());
+                    responseMap.put(ApplicationConstants.RESPOSE_STATUS_CODE,
+                            Integer.toString(httpResponse.getStatusLine().getStatusCode()));
                 }
                 getRequest.releaseConnection();
             } else {

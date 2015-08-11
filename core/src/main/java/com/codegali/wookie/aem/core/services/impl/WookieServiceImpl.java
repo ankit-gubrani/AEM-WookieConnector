@@ -94,22 +94,32 @@ public class WookieServiceImpl implements WookieService {
             Map<String, String> responseMap = wookieClient.makeGetRequest(API_URL, "");
 
             if (responseMap != null) {
-                LOGGER.info("Response " + responseMap.get(ApplicationConstants.RESPONSE_KEY));
-                LOGGER.info("FOrmat " + responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY));
 
-                LOGGER.info("" + responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY).contains(ApplicationConstants.XML_CONTENT_TYPE_RESPONSE));
-
-                if (!responseMap.get(ApplicationConstants.RESPONSE_KEY).equals(ApplicationConstants.INVALID_CONFIG_RESPONSE_STATUS)) {
-                    if (responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY).contains(ApplicationConstants.XML_CONTENT_TYPE_RESPONSE)) {
-                        responseJSON = XML.toJSONObject(responseMap.get(ApplicationConstants.RESPONSE_KEY));
-
-                        LOGGER.info("Final JSON Object : -------" + responseJSON);
-                    } else if (responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY).contains(ApplicationConstants.JSON_CONTENT_TYPE_RESPONSE)) {
-                        responseJSON = new JSONObject(responseMap.get(ApplicationConstants.RESPONSE_KEY));
-                    }
-                } else {
+                if(responseMap.get(ApplicationConstants.RESPOSE_STATUS_CODE).equals("404")) {
                     responseJSON = new JSONObject();
-                    responseJSON.put("isServerConfigValid", false);
+                    responseJSON.put(ApplicationConstants.IS_SERVER_RUNNING_RESPONSE_KEY, false);
+                    responseJSON.put(ApplicationConstants.AEM_RESPONSE_MESSAGE_KEY, responseMap.get(ApplicationConstants.RESPONSE_KEY));
+                    responseJSON.put(ApplicationConstants.RESPOSE_STATUS_CODE, responseMap.get(ApplicationConstants.RESPOSE_STATUS_CODE));
+                } else {
+                    LOGGER.info("Response " + responseMap.get(ApplicationConstants.RESPONSE_KEY));
+                    LOGGER.info("Format " + responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY));
+
+                    LOGGER.info("" + responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY).contains(ApplicationConstants.XML_CONTENT_TYPE_RESPONSE));
+
+                    if (!responseMap.get(ApplicationConstants.RESPONSE_KEY).equals(ApplicationConstants.INVALID_CONFIG_RESPONSE_STATUS)) {
+                        if (responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY).contains(ApplicationConstants.XML_CONTENT_TYPE_RESPONSE)) {
+                            responseJSON = XML.toJSONObject(responseMap.get(ApplicationConstants.RESPONSE_KEY));
+
+                            LOGGER.info("Final JSON Object : -------" + responseJSON);
+                        } else if (responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY).contains(ApplicationConstants.JSON_CONTENT_TYPE_RESPONSE)) {
+                            responseJSON = new JSONObject(responseMap.get(ApplicationConstants.RESPONSE_KEY));
+                        }
+                    } else {
+                        responseJSON = new JSONObject();
+                        responseJSON.put(ApplicationConstants.INVALID_CONFIG_RESPONSE_KEY, false);
+                        responseJSON.put(ApplicationConstants.AEM_RESPONSE_MESSAGE_KEY, ApplicationConstants.INVALID_CONFIG_RESPONSE_STATUS);
+                        responseJSON.put(ApplicationConstants.RESPOSE_STATUS_CODE, responseMap.get(ApplicationConstants.RESPOSE_STATUS_CODE));
+                    }
                 }
             }
         } catch (JSONException e) {

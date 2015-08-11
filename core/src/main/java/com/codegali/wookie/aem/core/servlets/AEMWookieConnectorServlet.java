@@ -11,6 +11,12 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.json.JSONObject;
 
+/**
+ * Servlet that returns response from Wookie server. Different selectors are exposed to perform
+ * various operations in the wookie server. For instance :
+ * GET request with widgets selector :          returns list of all the widgets hosted in the wookie server.
+ * GET request with widgetinstances selector :  returns the information of given widget instance.
+ */
 @SlingServlet(paths = {"/bin/aem-wookie"}, methods = {"GET"}, label = "AEM - Wookie connector servlet",
         description = "", generateComponent = false, selectors = {"widgets", "widgetinstances"})
 @Component(enabled = true, immediate = true, metatype = false)

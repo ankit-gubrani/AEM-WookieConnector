@@ -1,0 +1,7 @@
+#base=js
+translationAdmin.js
+translationAdmin.Actions.js
+serverConnectionTest.js
+translationStatusFilter.js
+beebox-jobs.js
+language-mapping.js

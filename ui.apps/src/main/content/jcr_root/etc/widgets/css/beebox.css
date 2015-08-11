@@ -1,0 +1,230 @@
+#CQ #targetLanguageGroup .x-form-check-wrap input[type="checkbox"] {
+    vertical-align: middle !important;
+}
+
+#CQ #targetLanguageGroup .x-form-check-wrap label {
+    padding-left: 5px;
+}
+
+.beebox-radio-basket {
+    vertical-align: middle !important;
+}
+
+.beebox-radio-basket + label {
+    vertical-align: middle !important;
+    top: 2px !important;
+    padding-right: 20px !important;
+}
+
+#quotationBox a>img {
+    margin-right: 15px !important;
+}
+
+#CQ #cq-tladmin-basket-button button {
+    background-image: url("/etc/clientlibs/beebox/widgets/images/show_basket.png") !important;
+    padding-left: 18px;
+    background-repeat: no-repeat;
+}
+
+#CQ #cq-tladmin-wrapper .beebox-chidren-checkbox {
+    margin-top: 5px !important;
+}
+
+#CQ #cq-tladmin-wrapper .x-btn-noicon .x-btn-small .x-btn-text {
+    height: 21px !important;
+    font-size: 15px !important;
+}
+
+#CQ #cq-tladmin-wrapper .status-none {
+    background-image: url("/etc/clientlibs/beebox/widgets/images/bulb-grey.gif");
+}
+
+#CQ #cq-tladmin-wrapper .status-intranslation {
+    background-image: url("/etc/clientlibs/beebox/widgets/images/bulb-orange.gif");
+}
+
+#CQ #cq-tladmin-wrapper .status-translated {
+    background-image: url("/etc/clientlibs/beebox/widgets/images/bulb-green.gif");
+}
+
+#CQ #cq-tladmin-wrapper .status-not_translated {
+    background-image: url("/etc/clientlibs/beebox/widgets/images/bulb-red.gif");
+}
+
+#CQ #cq-tladmin-wrapper .status-outdated {
+    background-image: url("/etc/clientlibs/beebox/widgets/images/bulb-blue.gif");
+}
+
+#CQ .cq-tladmin-header {
+    background: url("/etc/clientlibs/beebox/widgets/images/titlebar_bg.png") !important;
+}
+
+#CQ #submit {
+    padding-left: 10px;
+}
+
+#CQ #reset {
+    padding-left: 10px;
+}
+
+#CQ #submit button {
+    padding-left: 10px;
+}
+
+#CQ #reset button {
+    padding-left: 10px;
+}
+
+#CQ .beebox-job-link {
+    padding-right: 30px;
+}
+
+#CQ #transStatus {
+    margin-right: 15px;
+}
+
+#CQ #quotationBox .x-window-tbar {
+    padding: 5px 0;
+}
+
+#CQ select.beebox-child-option {
+    width: 100px;
+}
+
+#CQ label[for="serverSettingNote"] {
+    display: none !important;
+}
+
+#CQ #serverSettingNote {
+    display: none;
+}
+
+#CQ #x-form-el-serverSettingNote+.x-form-item-description {
+    padding-left: 0 !important;
+}
+
+#CQ #statusFilter {
+    margin-left: 15px;
+}
+
+#CQ #gridFilterSubmit {
+    margin: 0 10px;
+}
+
+#CQ #submit button {
+    font-size: 15px !important;
+}
+
+#CQ #reset button {
+    font-size: 15px !important;
+}
+
+#CQ #basketWindow .x-window-bbar .x-form-item {
+    display: inline-block !important;
+    float: left;
+    width: 300px;
+}
+
+#CQ #basketWindow .x-window-bbar .x-form-item label {
+    width: 120px !important;
+}
+
+#CQ #basketWindow .x-window-bbar .x-panel-body {
+    height: 30px;
+    padding-top: 8px;
+}
+
+#CQ #basketWindow .x-window-bbar .x-form-item:first-child label {
+    width: 100px;
+}
+
+#CQ label[for="jobEndDate"] {
+    width: 105px !important;
+    padding-left: 20px;
+}
+
+#CQ #x-form-el-jobEndDate {
+    padding-left: 130px !important;
+}
+
+#CQ #basket-bbar .x-panel-body.x-panel-body-noheader {
+    padding-top: 5px;
+}
+
+#CQ #basket-bbar .x-form-item {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+#CQ #jobNameFilter {
+    margin-left: 10px;
+    margin-top: -1px;
+}
+
+#CQ .beebox-about-us-container {
+    text-align: center;
+    margin: 30px;
+}
+
+#CQ .beebox-about-us-container h1 {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+#CQ .beebox-about-us-container p {
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: center;
+}
+
+#CQ .about-link:first-of-type {
+    margin-top: 10px;
+}
+
+#CQ .about-link {
+    height: 10px;
+}
+
+#CQ .about-link a {
+    text-decoration: underline;
+    color: blue;
+}
+
+#CQ .warning-message {
+    font-size: 11px;
+}
+
+#CQ .wordbee-license {
+    margin-top: 10px !important;
+}
+
+#CQ #x-form-el-targetLanguageGroup {
+    padding-left: 0 !important;
+    width: 100% !important;
+}
+
+#CQ #x-form-el-targetLanguageGroup #targetLanguageGroup .x-column {
+    width: 16% !important;
+    display: inline-block;
+}
+
+#CQ #langSet .x-fieldset-body {
+    width: 100% !important;
+}
+
+#CQ #langSet {
+    padding: 0 10px !important;
+}
+
+#CQ #x-form-el-targetLanguageGroup .x-column-inner {
+    width: 100% !important;
+}
+
+#CQ #x-form-el-targetLanguageGroup #targetLanguageGroup {
+    width: 100% !important;
+}
+
+#CQ .target-language-checkbox-group {
+    width: 100% !important;
+}
+
