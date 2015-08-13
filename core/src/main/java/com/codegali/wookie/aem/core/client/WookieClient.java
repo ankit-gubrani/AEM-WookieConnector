@@ -2,16 +2,19 @@ package com.codegali.wookie.aem.core.client;
 
 import com.codegali.wookie.aem.core.util.ApplicationConstants;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
@@ -83,8 +86,16 @@ public class WookieClient {
                 LOGGER.info("Wookie server configuration made in the AEM instance is not valid");
                 responseMap.put(ApplicationConstants.RESPONSE_KEY, ApplicationConstants.INVALID_CONFIG_RESPONSE_STATUS);
             }
-        } catch (Exception e) {
-            LOGGER.error("Exception occurred in MakeGETRequest Method : ", e);
+        }catch (ClientProtocolException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }  catch (HttpHostConnectException e) {
+            LOGGER.info("HttpHostConnectException occurred in Wookie client : ", e);
+            responseMap.put(ApplicationConstants.RESPONSE_KEY, " Please check if Wookie server is up and running ! HttpHostConnectException occurred");
+            responseMap.put(ApplicationConstants.RESPOSE_STATUS_CODE, "404");
+            return responseMap;
+        }
+        catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         return responseMap;
     }

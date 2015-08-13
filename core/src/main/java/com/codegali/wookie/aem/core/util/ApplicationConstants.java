@@ -132,4 +132,8 @@ public class ApplicationConstants {
      */
     public static final String AEM_RESPONSE_MESSAGE_KEY = "message";
 
+    /**
+     *
+     */
+    public static final String BLANK_JSON_OBJECT = "{}";
 }

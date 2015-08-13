@@ -10,6 +10,8 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Servlet that returns response from Wookie server. Different selectors are exposed to perform
@@ -22,6 +24,8 @@ import org.json.JSONObject;
 @Component(enabled = true, immediate = true, metatype = false)
 @Service(AEMWookieConnectorServlet.class)
 public class AEMWookieConnectorServlet extends SlingAllMethodsServlet {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(AEMWookieConnectorServlet.class);
 
     @Reference
     private WookieService wookieService;
@@ -38,15 +42,28 @@ public class AEMWookieConnectorServlet extends SlingAllMethodsServlet {
                 String widgetId = request.getParameter(ApplicationConstants.WIDGET_ID_REQUEST_PARAM);
                 String userId = request.getParameter(ApplicationConstants.USER_ID_REQUEST_PARAM);
 
-                if ((!"".equals(widgetId)) && (!"".equals(userId))) {
+                if (widgetId != null && userId!= null && (!"".equals(widgetId)) && (!"".equals(userId))) {
+                    LOGGER.info(""+widgetId);
+                    LOGGER.info(""+userId);
                     responseJsonObject = wookieService.getWidgetInstance(widgetId, userId);
+
+                    response.getWriter().println(responseJsonObject);
+                } else {
+                    response.setContentType("text/html");
+                    response.getWriter().println("Please provide following query parameters to get <b>widgetintance</b> : " +
+                            "<br>1) <b>widgetid</b> - <i>The URI of the widget this is an instance of </i>" +
+                            "<br>2) <b>userid</b> - <i>An identifier (typically a hash rather than a real user Id) " +
+                            "issued by an application representing the current viewer of the widget instance<i>");
                 }
             } else if (firstSelector.equals(ApplicationConstants.PARTICIPANT_SELECTOR)) {
                 //Call wookieService.getParticipants(); method here along with required parameters.
             } else if (firstSelector.equals(ApplicationConstants.PROPERTIES_SELECTOR)) {
                 //Call wookieService.getProperties(); method here along with required parameters.
             }
-            response.getWriter().println(responseJsonObject);
+
+            if(!responseJsonObject.toString().equals(ApplicationConstants.BLANK_JSON_OBJECT)) {
+                response.getWriter().println(responseJsonObject);
+            }
         } else {
             response.setContentType("text/html");
             response.getWriter().println("Please provide a <u><b>selector</b></u> : <br> 1) <b>widgets</b> - " +
