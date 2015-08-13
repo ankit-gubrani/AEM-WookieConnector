@@ -136,4 +136,6 @@ public class ApplicationConstants {
      *
      */
     public static final String BLANK_JSON_OBJECT = "{}";
+
+    public static final String RESPONSE_SERVER_NOT_WORKING_STATUS_CODE = "Connection_Refused";
 }

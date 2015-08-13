@@ -95,7 +95,8 @@ public class WookieServiceImpl implements WookieService {
 
             if (responseMap != null) {
 
-                if(responseMap.get(ApplicationConstants.RESPOSE_STATUS_CODE).equals("404")) {
+                if(responseMap.get(ApplicationConstants.RESPOSE_STATUS_CODE).equals("404") ||
+                        responseMap.get(ApplicationConstants.RESPOSE_STATUS_CODE).equals(ApplicationConstants.RESPONSE_SERVER_NOT_WORKING_STATUS_CODE)) {
                     responseJSON = new JSONObject();
                     responseJSON.put(ApplicationConstants.IS_SERVER_RUNNING_RESPONSE_KEY, false);
                     responseJSON.put(ApplicationConstants.AEM_RESPONSE_MESSAGE_KEY, responseMap.get(ApplicationConstants.RESPONSE_KEY));

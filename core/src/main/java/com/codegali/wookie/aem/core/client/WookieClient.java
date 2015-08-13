@@ -91,7 +91,7 @@ public class WookieClient {
         }  catch (HttpHostConnectException e) {
             LOGGER.info("HttpHostConnectException occurred in Wookie client : ", e);
             responseMap.put(ApplicationConstants.RESPONSE_KEY, " Please check if Wookie server is up and running ! HttpHostConnectException occurred");
-            responseMap.put(ApplicationConstants.RESPOSE_STATUS_CODE, "404");
+            responseMap.put(ApplicationConstants.RESPOSE_STATUS_CODE, ApplicationConstants.RESPONSE_SERVER_NOT_WORKING_STATUS_CODE);
             return responseMap;
         }
         catch (IOException e) {
