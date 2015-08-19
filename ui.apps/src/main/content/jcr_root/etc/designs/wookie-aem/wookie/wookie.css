@@ -1,0 +1,51 @@
+#CQ .wookie {
+	background-image: url(../icons/wookie16X16.png) ! important;
+}
+
+#CQ .wookie-default-widget {
+	background-image: url(../icons/defaultwidget.png) ! important;
+}
+
+#CQ .cq-cft-wookie-text-wrapper {
+	margin-left: 93px;
+}
+
+#CQ .cq-cft-wookie-thumb, #CQ .cq-cft-wookie-thumb-top {
+    float: left;
+    padding-right: 10px;
+    width: 70px;
+    height: 82px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#CQ .cq-cft-wookie-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+    font-size: 13px;
+}
+
+#CQ .cq-cft-wookie-decription {
+
+}
+
+#CQ .cq-cft-wookie-item {
+    border-color: #FFFFFF rgb(255, 255, 255) rgb(238, 238, 238) !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    color: #555555 !important;
+    font-family: tahoma,arial,helvetica,sans-serif !important;
+    font-size: 11px !important;
+    font-size-adjust: none !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    font-weight: normal !important;
+    line-height: normal !important;
+    padding: 3px 2px !important;
+    white-space: normal !important;
+}
+
+#CQ .cq-cft-wookie-separator {
+	clear: both;
+}
