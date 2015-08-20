@@ -6,7 +6,7 @@
     "ranking": 1,
     "items": [
     CQ.wcm.ContentFinderTab.getResultsBoxConfig({
-        "itemsDDGroups": [CQ.wcm.EditBase.DD_GROUP_ASSET],
+        "itemsDDGroups": ["wookie-widgets"],
         "itemsDDNewParagraph": {
             "path": "foundation/components/download",
             "propertyName": "./wookieWidget"

@@ -46,8 +46,6 @@ public class AEMWookieConnectorServlet extends SlingAllMethodsServlet {
                     LOGGER.info("widgetId - "+widgetId);
                     LOGGER.info("userId - "+userId);
                     responseJsonObject = wookieService.getWidgetInstance(widgetId, userId);
-
-                    response.getWriter().println(responseJsonObject);
                 } else {
                     response.setContentType("text/html");
                     response.getWriter().println("Please provide following query parameters to get <b>widgetintance</b> : " +

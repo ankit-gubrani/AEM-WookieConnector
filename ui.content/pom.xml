@@ -136,7 +136,7 @@
     <!-- ====================================================================== -->
     <profiles>
         <profile>
-            <id>autoInstallPackage</id>
+            <id>autoInstallContentPackage</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
@@ -163,7 +163,7 @@
             </build>
         </profile>
         <profile>
-            <id>autoInstallPackagePublish</id>
+            <id>autoInstallContentPackagePublish</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
