@@ -13,6 +13,7 @@ import org.json.XML;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Service(WookieService.class)
@@ -36,9 +37,9 @@ public class WookieServiceImpl implements WookieService {
                     configurationsService.getApiKey(), configurationsService.getSharedDataKey());
 
             //Query parameters do not need to start with '?'
-            String queryParams = ApplicationConstants.USER_ID_QUERY_PARAM + userId + "&" +
-                    ApplicationConstants.WIDGET_ID_QUERY_PARAM + widgetId + "&" + ApplicationConstants.FORMAT_QUERY_PARAM +
-                    "json";
+            String queryParams = ApplicationConstants.USER_ID_QUERY_PARAM + "=" + userId + "&" +
+                    ApplicationConstants.WIDGET_ID_QUERY_PARAM + "=" + widgetId + "&" + ApplicationConstants.FORMAT_QUERY_PARAM
+                    + "=" + "json";
 
             Map<String, String> responseMap = wookieClient.makeGetRequest(API_URL, queryParams);
 
@@ -167,11 +168,17 @@ public class WookieServiceImpl implements WookieService {
     }
 
     @Override
-    public void addParticipants() {
+    public void addParticipants(final String participantID, final String participantDisplayName,
+                                final String participantThumbnailUrl, final String idKey) {
         final String API_URL = "/participants";
+
+        LOGGER.info("Add participants in the wookie service"+participantID);
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
                 configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+
+        wookieClient.makePostRequest(API_URL, participantID, participantDisplayName,
+                participantThumbnailUrl, idKey);
 
     }
 

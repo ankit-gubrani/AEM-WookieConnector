@@ -13,10 +13,40 @@
                 <items jcr:primaryType="cq:WidgetCollection">
                     <userid
                             jcr:primaryType="cq:Widget"
-                            fieldLabel="User ID"
+                            fieldLabel="Enter User"
                             name="./userid"
                             xtype="textfield"
                             />
+                    <containertitle
+                            jcr:primaryType="cq:Widget"
+                            fieldLabel="Enter Title"
+                            name="./title"
+                            xtype="textfield"
+                            />
+                    <selectuser
+                            jcr:primaryType="cq:Widget"
+                            fieldLabel="Select User"
+                            options="/bin/get/aem-users.json"
+                            name="./user"
+                            xtype="selection"
+                            type="select"
+                            />
+                    <widgetid
+                            jcr:primaryType="cq:Widget"
+                            fieldLabel="Wookie Widget ID"
+                            name="./wookieWidget"
+                            disabled="{Boolean}true"
+                            xtype="textfield"
+                            />
+                    <clearButton
+                            jcr:primaryType="cq:Widget"
+                            text="Clear Wookie Widget ID"
+                            xtype="button">
+                            <listeners
+                                    jcr:primaryType="nt:unstructured"
+                                    click="function(component, event){component.previousSibling().setValue('');}"
+                                    />
+                    </clearButton>
                 </items>
             </tab1>
         </items>

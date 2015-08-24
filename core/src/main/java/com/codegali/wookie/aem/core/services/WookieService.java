@@ -59,7 +59,8 @@ public interface WookieService {
      * This method adds a participant to the specified Widget Instance
      * Request Method : POST  |  API_URI : participants
      */
-    public void addParticipants();
+    public void addParticipants(final String participantID, final String participantDisplayName,
+                                final String participantThumbnailUrl, final String idKey);
 
     /**
      * This method deletes the specified Participant from the specified Widget Instance.

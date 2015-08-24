@@ -3,7 +3,7 @@
     <filter root="/apps/wookie-aem">
         <exclude pattern="/apps/wookie-aem/install" />
     </filter>
-    <filter root="/apps/wookie-aem/httpcomponents-wookie_1.0.0.jar" />
+    <filter root="/apps/wookie-aem/install/httpcomponents-wookie_1.0.0.jar" />
     <filter root="/apps/sling" />
     <filter root="/apps/wcm" />
     <filter root="/etc/designs/wookie-aem"/>

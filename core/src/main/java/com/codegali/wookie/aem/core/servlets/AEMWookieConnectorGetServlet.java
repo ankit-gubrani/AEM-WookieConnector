@@ -9,6 +9,7 @@ import org.apache.felix.scr.annotations.sling.SlingServlet;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
+import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,13 +20,13 @@ import org.slf4j.LoggerFactory;
  * GET request with widgets selector :          returns list of all the widgets hosted in the wookie server.
  * GET request with widgetinstances selector :  returns the information of given widget instance.
  */
-@SlingServlet(paths = {"/bin/aem-wookie"}, methods = {"GET"}, label = "AEM - Wookie connector servlet",
-        description = "", generateComponent = false, selectors = {"widgets", "widgetinstances"})
-@Component(enabled = true, immediate = true, metatype = false)
-@Service(AEMWookieConnectorServlet.class)
-public class AEMWookieConnectorServlet extends SlingAllMethodsServlet {
+@SlingServlet(paths = {"/bin/get/aem-wookie"}, methods = {"GET"}, label = "AEM - Wookie connector GET servlet",
+        description = "", generateComponent = false, selectors = {"widgets", "widgetinstances", "participants"})
+@Component(enabled = true, immediate = true, metatype = false, label = "AEM - Wookie connector GET servlet")
+@Service(AEMWookieConnectorGetServlet.class)
+public class AEMWookieConnectorGetServlet extends SlingSafeMethodsServlet {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AEMWookieConnectorServlet.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AEMWookieConnectorGetServlet.class);
 
     @Reference
     private WookieService wookieService;

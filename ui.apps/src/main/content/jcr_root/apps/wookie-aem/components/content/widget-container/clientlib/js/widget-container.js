@@ -12,7 +12,7 @@
             alert(userId);
             $.ajax({
                 method: "GET",
-                url: "/bin/aem-wookie.widgetinstances.html",
+                url: "/bin/get/aem-wookie.widgetinstances.html",
                 data: {'widgetid': widgetId, 'userid':userId},
                 success: function(response){
                     var responseJson = JSON.parse(response);

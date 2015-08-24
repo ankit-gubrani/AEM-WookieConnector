@@ -5,57 +5,62 @@ public class ApplicationConstants {
     /**
      *
      */
-    public static final String API_KEY_QUERY_PARAM = "api_key=";
+    public static final String API_KEY_QUERY_PARAM = "api_key";
 
     /**
      *
      */
-    public static final String SHARED_DATA_QUERY_PARAM = "shareddatakey=";
+    public static final String SHARED_DATA_QUERY_PARAM = "shareddatakey";
 
     /**
      *
      */
-    public static final String USER_ID_QUERY_PARAM = "userid=";
+    public static final String USER_ID_QUERY_PARAM = "userid";
 
     /**
      *
      */
-    public static final String WIDGET_ID_QUERY_PARAM = "widgetid=";
+    public static final String WIDGET_ID_QUERY_PARAM = "widgetid";
 
     /**
      *
      */
-    public static final String LOCALE_QUERY_PARAM = "locale=";
+    public static final String LOCALE_QUERY_PARAM = "locale";
 
     /**
      *
      */
-    public static final String FORMAT_QUERY_PARAM = "format=";
+    public static final String FORMAT_QUERY_PARAM = "format";
 
     /**
      *
      */
-    public static final String PARTICIPANT_ID_QUERY_PARAM = "participant_id=";
+    public static final String PARTICIPANT_ID_QUERY_PARAM = "participant_id";
 
     /**
      *
      */
-    public static final String PARTICIPANT_DISP_NAME_QUERY_PARAM = "participant_display_name=";
+    public static final String PARTICIPANT_DISP_NAME_QUERY_PARAM = "participant_display_name";
 
     /**
      *
      */
-    public static final String PARTICIPANT_THUMBNAIL_URL_QUERY_PARAM = "participant_thumbnail_url=";
+    public static final String PARTICIPANT_THUMBNAIL_URL_QUERY_PARAM = "participant_thumbnail_url";
 
     /**
      *
      */
-    public static final String PROPERTY_NAME_QUERY_PARAM = "propertyname=";
+    public static final String WIDGET_INSTANCE_ID_KEY = "id_key";
 
     /**
      *
      */
-    public static final String PROPERTY_VALUE_QUERY_PARAM = "propertyvalue=";
+    public static final String PROPERTY_NAME_QUERY_PARAM = "propertyname";
+
+    /**
+     *
+     */
+    public static final String PROPERTY_VALUE_QUERY_PARAM = "propertyvalue";
 
     /**
      *

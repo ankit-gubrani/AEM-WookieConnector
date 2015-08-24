@@ -29,7 +29,7 @@
             CQ.wcm.ContentFinderTab.REFRESH_BUTTON
         ]
     },{
-        "url": "/bin/aem-wookie.widgets.html"
+        "url": "/bin/get/aem-wookie.widgets.html"
     }, {
         "baseParams": {
             /*"defaultMimeType": "image"*/

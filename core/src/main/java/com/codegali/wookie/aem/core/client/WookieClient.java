@@ -2,21 +2,26 @@ package com.codegali.wookie.aem.core.client;
 
 import com.codegali.wookie.aem.core.util.ApplicationConstants;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class WookieClient {
@@ -47,8 +52,8 @@ public class WookieClient {
                 HttpClient httpClient = HttpClientBuilder.create().build();
 
                 HttpGet getRequest = new HttpGet(wookieServerEndpoint + apiUrl + "?" + queryParams + "&" +
-                        ApplicationConstants.API_KEY_QUERY_PARAM + apiKey
-                        + "&" + ApplicationConstants.SHARED_DATA_QUERY_PARAM + sharedDataKey);
+                        ApplicationConstants.API_KEY_QUERY_PARAM + "=" + apiKey
+                        + "&" + ApplicationConstants.SHARED_DATA_QUERY_PARAM + "=" + sharedDataKey);
 
                 LOGGER.info("GET Request made was : " + getRequest.toString());
 
@@ -87,7 +92,7 @@ public class WookieClient {
                 responseMap.put(ApplicationConstants.RESPONSE_KEY, ApplicationConstants.INVALID_CONFIG_RESPONSE_STATUS);
             }
         }catch (ClientProtocolException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            LOGGER.error("ClientProtocolException occurred in Wookie client : ", e);
         }  catch (HttpHostConnectException e) {
             LOGGER.info("HttpHostConnectException occurred in Wookie client : ", e);
             responseMap.put(ApplicationConstants.RESPONSE_KEY, " Please check if Wookie server is up and running ! HttpHostConnectException occurred");
@@ -95,7 +100,7 @@ public class WookieClient {
             return responseMap;
         }
         catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            LOGGER.error("IOException occurred in Wookie client : ", e);
         }
         return responseMap;
     }
@@ -104,15 +109,34 @@ public class WookieClient {
      * @param apiUrl
      * @return
      */
-    public String makePostRequest(final String apiUrl) {
+    public String makePostRequest(final String apiUrl, final String participantID, final String participantDisplayName,
+                                  final String participantThumbnailUrl, final String idKey) {
 
         try {
+            LOGGER.info("Making post request");
             HttpClient httpClient = HttpClientBuilder.create().build();
 
             //Add other required fields
-            HttpPost postRequest = new HttpPost(wookieServerEndpoint);
+            HttpPost postRequest = new HttpPost(wookieServerEndpoint+apiUrl);
+
+            List<NameValuePair> postQueryParams = new ArrayList<NameValuePair>();
+
+            postQueryParams.add(new BasicNameValuePair(ApplicationConstants.API_KEY_QUERY_PARAM, apiKey));
+            postQueryParams.add(new BasicNameValuePair(ApplicationConstants.PARTICIPANT_ID_QUERY_PARAM, participantID));
+            postQueryParams.add(new BasicNameValuePair(ApplicationConstants.PARTICIPANT_DISP_NAME_QUERY_PARAM, participantDisplayName));
+            postQueryParams.add(new BasicNameValuePair(ApplicationConstants.PARTICIPANT_THUMBNAIL_URL_QUERY_PARAM, participantThumbnailUrl));
+            postQueryParams.add(new BasicNameValuePair(ApplicationConstants.WIDGET_INSTANCE_ID_KEY, idKey));
+
+            postRequest.setEntity(new UrlEncodedFormEntity(postQueryParams));
+
+            HttpResponse httpResponse = httpClient.execute(postRequest);
+
+            LOGGER.info("-------->"+new UrlEncodedFormEntity(postQueryParams).toString());
+
 
             LOGGER.info("POST Request made was : " + postRequest.toString());
+
+            LOGGER.info("POST response was : "+httpResponse);
         } catch (Exception e) {
             LOGGER.error("Exception occurred in MakePOSTRequest Method : ", e);
         }
