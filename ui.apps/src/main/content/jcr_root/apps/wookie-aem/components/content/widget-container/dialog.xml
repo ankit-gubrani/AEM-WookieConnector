@@ -51,4 +51,8 @@
             </tab1>
         </items>
     </items>
+    <listeners
+            jcr:primaryType="nt:unstructured"
+            beforesubmit="function(dialog){dialog.getField('./wookieWidget').setDisabled(false);}"
+            />
 </jcr:root>

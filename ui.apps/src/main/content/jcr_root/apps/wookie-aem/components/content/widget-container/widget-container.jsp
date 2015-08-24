@@ -21,12 +21,16 @@
 <c:set var="widgetId" value="<%= widgetId %>" />
 <div id="${uuid}"></div>
 <h2>${properties.title}</h2>
-<c:if test="${empty widgetId}">
-    <div>Please select a widget</div>
-</c:if>
-<c:if test="${empty userId}">
-    <div>Please select a user</div>
-</c:if>
+<c:choose>
+    <c:when test="${empty widgetId}">
+        <div>Please select a widget</div>
+    </c:when>
+    <c:when test="${empty userId}">
+        <div>Please select a user</div>
+    </c:when>
+    <c:otherwise>
+    </c:otherwise>
+</c:choose>
 <c:choose>
     <c:when test="${not empty widgetId && not empty userId}">
         <div class="result">
@@ -50,4 +54,3 @@
 <script type="text/javascript">
     $('#${uuid}').closest('.widget-container').getwidgetInstance("${widgetId}", "${userId}");
 </script>
-
