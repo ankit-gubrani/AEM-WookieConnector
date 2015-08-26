@@ -1,3 +1,8 @@
+/**
+ *
+ * Copyright 2015 Ankit Gubrani & Rima mittal
+ *
+ **/
 package com.codegali.wookie.aem.core.client;
 
 import com.codegali.wookie.aem.core.util.ApplicationConstants;

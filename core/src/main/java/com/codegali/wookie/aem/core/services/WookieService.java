@@ -1,3 +1,8 @@
+/**
+ *
+ * Copyright 2015 Ankit Gubrani & Rima mittal
+ *
+ **/
 package com.codegali.wookie.aem.core.services;
 
 import org.json.JSONObject;

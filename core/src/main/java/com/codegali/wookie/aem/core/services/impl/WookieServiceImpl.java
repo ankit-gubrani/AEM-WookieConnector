@@ -1,3 +1,8 @@
+/**
+ *
+ * Copyright 2015 Ankit Gubrani & Rima mittal
+ *
+ **/
 package com.codegali.wookie.aem.core.services.impl;
 
 import com.codegali.wookie.aem.core.client.WookieClient;
@@ -48,24 +53,6 @@ public class WookieServiceImpl implements WookieService {
             Map<String, String> responseMap = wookieClient.makeGetRequest(API_URL, queryParams);
 
             responseJSON = getResponseJson(responseMap);
-
-            /*if (responseMap != null) {
-                LOGGER.info("Response " + responseMap.get(ApplicationConstants.RESPONSE_KEY));
-                LOGGER.info("FOrmat " + responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY));
-
-                if (!responseMap.get(ApplicationConstants.RESPONSE_KEY).equals(ApplicationConstants.INVALID_CONFIG_RESPONSE_STATUS)) {
-                    if (responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY).contains(ApplicationConstants.XML_CONTENT_TYPE_RESPONSE)) {
-                        responseJSON = XML.toJSONObject(responseMap.get(ApplicationConstants.RESPONSE_KEY));
-
-                        LOGGER.info("Final JSON Object : -------" + responseJSON);
-                    } else if (responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY).contains(ApplicationConstants.JSON_CONTENT_TYPE_RESPONSE)) {
-                        responseJSON = new JSONObject(responseMap.get(ApplicationConstants.RESPONSE_KEY));
-                    }
-                } else {
-                    responseJSON = new JSONObject();
-                    responseJSON.put("isServerConfigValid", false);
-                }
-            }*/
         } catch (Exception e) {
             LOGGER.error("Exception occurred while getting widget instance : ", e);
         }
@@ -92,25 +79,6 @@ public class WookieServiceImpl implements WookieService {
             Map<String, String> responseMap = wookieClient.makePostRequest(API_URL, postQueryParams);
 
             responseJSON = getResponseJson(responseMap);
-
-            /*if (responseMap != null) {
-                LOGGER.info("Response " + responseMap.get(ApplicationConstants.RESPONSE_KEY));
-                LOGGER.info("FOrmat " + responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY));
-
-                if (!responseMap.get(ApplicationConstants.RESPONSE_KEY).equals(ApplicationConstants.INVALID_CONFIG_RESPONSE_STATUS)) {
-                    if (responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY).contains(ApplicationConstants.XML_CONTENT_TYPE_RESPONSE)) {
-                        responseJSON = XML.toJSONObject(responseMap.get(ApplicationConstants.RESPONSE_KEY));
-
-                        LOGGER.info("Final JSON Object : -------" + responseJSON);
-                    } else if (responseMap.get(ApplicationConstants.RESPONSE_FORMAT_KEY).contains(ApplicationConstants.JSON_CONTENT_TYPE_RESPONSE)) {
-                        responseJSON = new JSONObject(responseMap.get(ApplicationConstants.RESPONSE_KEY));
-                    }
-                } else {
-                    responseJSON = new JSONObject();
-                    responseJSON.put("isServerConfigValid", false);
-                }
-            }*/
-
         } catch (Exception e) {
             LOGGER.error("Exception occured while creating widget instance in WookieServiceImpl : ", e);
         }
@@ -284,7 +252,6 @@ public class WookieServiceImpl implements WookieService {
         } catch (JSONException e) {
             LOGGER.error("JSON Exception occurred while converting XML to JSON object", e);
         }
-
         return responseJSON;
     }
 }
