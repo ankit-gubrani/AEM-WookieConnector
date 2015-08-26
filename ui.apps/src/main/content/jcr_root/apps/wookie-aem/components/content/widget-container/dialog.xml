@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
           jcr:primaryType="cq:Dialog"
-          title="Wookie widget container"
+          title="Wookie widget  container"
           xtype="dialog">
     <items
             jcr:primaryType="cq:Widget"
@@ -11,12 +11,6 @@
                     jcr:primaryType="cq:Panel"
                     title="Widget Info">
                 <items jcr:primaryType="cq:WidgetCollection">
-                    <userid
-                            jcr:primaryType="cq:Widget"
-                            fieldLabel="Enter User"
-                            name="./userid"
-                            xtype="textfield"
-                            />
                     <containertitle
                             jcr:primaryType="cq:Widget"
                             fieldLabel="Enter Title"
@@ -27,7 +21,7 @@
                             jcr:primaryType="cq:Widget"
                             fieldLabel="Select User"
                             options="/bin/get/aem-users.json"
-                            name="./user"
+                            name="./userid"
                             xtype="selection"
                             type="select"
                             />

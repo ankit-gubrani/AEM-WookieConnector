@@ -16,7 +16,7 @@ public interface WookieService {
      *  This method create a new widget instance using the given parameters.
      *  Request Method : POST  |  API_URI : widgetinstances
      */
-    public void createWidgetInstance();
+    public JSONObject createWidgetInstance(String userId, String widgetId);
 
     /**
      * This method allows to either stop, resume, or clone an instance, depending on the content of the action parameter.
@@ -34,7 +34,7 @@ public interface WookieService {
      * This method adds a widget to the server.
      * Request Method : POST  |  API_URI : widgets
      */
-    public void addWidgets();
+    public void addWidget();
 
     /**
      * This method updates the specified widget on the server.
@@ -59,8 +59,8 @@ public interface WookieService {
      * This method adds a participant to the specified Widget Instance
      * Request Method : POST  |  API_URI : participants
      */
-    public void addParticipants(final String participantID, final String participantDisplayName,
-                                final String participantThumbnailUrl, final String idKey);
+    public JSONObject addParticipants(final String participantID, final String participantDisplayName, final String participantThumbnailUrl,
+                                final String widgetId, final String userId, final String participantRole, final String instanceId);
 
     /**
      * This method deletes the specified Participant from the specified Widget Instance.

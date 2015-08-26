@@ -20,6 +20,11 @@ public class ApplicationConstants {
     /**
      *
      */
+    public static final String PARTICIPANT_ROLE_QUERY_PARAM = "participant_role";
+
+    /**
+     *
+     */
     public static final String WIDGET_ID_QUERY_PARAM = "widgetid";
 
     /**
@@ -115,16 +120,6 @@ public class ApplicationConstants {
     /**
      *
      */
-    public static final String WIDGET_ID_REQUEST_PARAM = "widgetid";
-
-    /**
-     *
-     */
-    public static final String USER_ID_REQUEST_PARAM = "userid";
-
-    /**
-     *
-     */
     public static final String RESPOSE_STATUS_CODE = "status-code";
 
     /**
@@ -143,4 +138,6 @@ public class ApplicationConstants {
     public static final String BLANK_JSON_OBJECT = "{}";
 
     public static final String RESPONSE_SERVER_NOT_WORKING_STATUS_CODE = "Connection_Refused";
+
+    public static final String RESPONSE_JSON_STATUS = "status";
 }

@@ -8,7 +8,7 @@
     CQ.wcm.ContentFinderTab.getResultsBoxConfig({
         "itemsDDGroups": ["wookie-widgets"],
         "itemsDDNewParagraph": {
-            "path": "foundation/components/download",
+            "path": "wookie-aem/components/content/widget-container",
             "propertyName": "./wookieWidget"
         },
         "items": {
@@ -29,7 +29,7 @@
             CQ.wcm.ContentFinderTab.REFRESH_BUTTON
         ]
     },{
-        "url": "/bin/get/aem-wookie.widgets.html"
+        "url": "/bin/aem-wookie.widgets.html"
     }, {
         "baseParams": {
             /*"defaultMimeType": "image"*/
