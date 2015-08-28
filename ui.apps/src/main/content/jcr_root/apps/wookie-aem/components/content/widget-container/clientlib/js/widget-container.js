@@ -3,6 +3,7 @@
     $.fn.getwidgetInstance = function (widgetId, userId) {
         return this.each(function () {
             var item = $(this);
+            var widgetInstance = {};
             $.ajax({
                 method: "POST",
                 url: "/bin/aem-wookie.widgetinstances.html",
@@ -10,10 +11,10 @@
                 success: function (response) {
                     var responseJson = JSON.parse(response);
                     console.log(responseJson);
-                    WidgetInstance.setInstanceUrl(responseJson.widgetdata.url);
-                    WidgetInstance.setWidth(responseJson.widgetdata.width);
-                    WidgetInstance.setHeight(responseJson.widgetdata.height);
-                    WidgetInstance.setInstanceId(responseJson.widgetdata.identifier);
+                    widgetInstance.instanceUrl = responseJson.widgetdata.url;
+                    widgetInstance.width = responseJson.widgetdata.width;
+                    widgetInstance.height = responseJson.widgetdata.height;
+                    widgetInstance.instanceId = responseJson.widgetdata.identifier;
                 },
                 async: false
             });
@@ -22,32 +23,13 @@
                 method: "POST",
                 url: "/bin/aem-wookie.participants.html",
                 data: {'widgetid': widgetId, 'userid': userId, 'participant_display_name': userId,
-                    'participant_id': userId, 'participant_thumbnail_url': 'test', participant_role : 'host','id_key': WidgetInstance.instanceId}
+                    'participant_id': userId, 'participant_thumbnail_url': 'test', participant_role : 'host','id_key': widgetInstance.instanceId}
             }).done(function () {
                     var iframe = item.find('.widget_frame');
-                    iframe.attr('src', WidgetInstance.instanceUrl);
-                    iframe.attr('width', WidgetInstance.width);
-                    iframe.attr('height', WidgetInstance.height);
+                    iframe.attr('src', widgetInstance.instanceUrl);
+                    iframe.attr('width', widgetInstance.width);
+                    iframe.attr('height', widgetInstance.height);
                 });
         });
     }
 })(jQuery);
-
-var WidgetInstance = {
-    instanceUrl: null,
-    instanceId: null,
-    width: 250,
-    height: 250,
-    setInstanceUrl: function (instanceUrl) {
-        this.instanceUrl = instanceUrl;
-    },
-    setWidth: function (width) {
-        this.width = width;
-    },
-    setHeight: function (height) {
-        this.height = height;
-    },
-    setInstanceId: function(instanceId) {
-        this.instanceId = instanceId;
-    }
-}
