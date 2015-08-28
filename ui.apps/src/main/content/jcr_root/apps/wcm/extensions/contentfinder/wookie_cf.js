@@ -1,3 +1,7 @@
+/*
+ * Copyright 2015 Ankit Gubrani
+ * @license
+ */
 {
     "tabTip": CQ.I18n.getMessage("Wookie Widgets"),
     "id": "cfTab-Wookie-widgets",

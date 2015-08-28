@@ -1,3 +1,7 @@
+/*
+* Copyright 2015 Ankit Gubrani
+* @license
+ */
 ;
 (function ($) {
     $.fn.getwidgetInstance = function (widgetId, userId) {
