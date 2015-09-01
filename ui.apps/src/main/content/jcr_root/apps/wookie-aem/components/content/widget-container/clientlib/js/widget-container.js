@@ -27,7 +27,8 @@
                 method: "POST",
                 url: "/bin/aem-wookie.participants.html",
                 data: {'widgetid': widgetId, 'userid': userId, 'participant_display_name': userId,
-                    'participant_id': userId, 'participant_thumbnail_url': 'test', participant_role : 'host','id_key': widgetInstance.instanceId}
+                    'participant_id': userId, 'participant_thumbnail_url': '/wookie/deploy/wookie.apache.org/widgets/simplechat/default_thumbnail.png',
+                    participant_role : 'host','id_key': widgetInstance.instanceId}
             }).done(function () {
                     var iframe = item.find('.widget_frame');
                     iframe.attr('src', widgetInstance.instanceUrl);
