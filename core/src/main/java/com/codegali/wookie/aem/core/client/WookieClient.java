@@ -36,12 +36,10 @@ public class WookieClient {
 
     private String wookieServerEndpoint;
     private String apiKey;
-    private String sharedDataKey;
 
-    public WookieClient(final String wookieServerEndpoint, final String apiKey, final String sharedDataKey) {
+    public WookieClient(final String wookieServerEndpoint, final String apiKey) {
         this.apiKey = apiKey;
         this.wookieServerEndpoint = wookieServerEndpoint;
-        this.sharedDataKey = sharedDataKey;
     }
 
     /**
@@ -58,8 +56,7 @@ public class WookieClient {
                 HttpClient httpClient = HttpClientBuilder.create().build();
 
                 HttpGet getRequest = new HttpGet(wookieServerEndpoint + apiUrl + "?" + queryParams + "&" +
-                        ApplicationConstants.API_KEY_QUERY_PARAM + "=" + apiKey
-                        + "&" + ApplicationConstants.SHARED_DATA_QUERY_PARAM + "=" + sharedDataKey);
+                        ApplicationConstants.API_KEY_QUERY_PARAM + "=" + apiKey);
 
                 LOGGER.info("GET Request made was : " + getRequest.toString());
 
@@ -128,7 +125,6 @@ public class WookieClient {
                 HttpPost postRequest = new HttpPost(wookieServerEndpoint+apiUrl);
 
                 postQueryParams.add(new BasicNameValuePair(ApplicationConstants.API_KEY_QUERY_PARAM, apiKey));
-                postQueryParams.add(new BasicNameValuePair(ApplicationConstants.SHARED_DATA_QUERY_PARAM, sharedDataKey));
 
                 postRequest.setEntity(new UrlEncodedFormEntity(postQueryParams));
 
@@ -244,10 +240,6 @@ public class WookieClient {
         }
 
         if ("".equals(apiKey)) {
-            isValid = false;
-        }
-
-        if ("".equals(sharedDataKey)) {
             isValid = false;
         }
 

@@ -43,7 +43,7 @@ public class WookieServiceImpl implements WookieService {
 
         try {
             WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                    configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                    configurationsService.getApiKey());
 
             //Query parameters do not need to start with '?'
             String queryParams = ApplicationConstants.USER_ID_QUERY_PARAM + "=" + userId + "&" +
@@ -60,13 +60,13 @@ public class WookieServiceImpl implements WookieService {
     }
 
     @Override
-    public JSONObject createWidgetInstance(final String userId, final String widgetId) {
+    public JSONObject createWidgetInstance(final String userId, final String widgetId, final String sharedDataKey) {
         final String API_URL = "/widgetinstances";
 
         JSONObject responseJSON = null;
         try {
             WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                    configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                    configurationsService.getApiKey());
 
             List<NameValuePair> postQueryParams = new ArrayList<NameValuePair>();
 
@@ -75,6 +75,7 @@ public class WookieServiceImpl implements WookieService {
 
             postQueryParams.add(new BasicNameValuePair(ApplicationConstants.WIDGET_ID_QUERY_PARAM, widgetId));
             postQueryParams.add(new BasicNameValuePair(ApplicationConstants.USER_ID_QUERY_PARAM, userId));
+            postQueryParams.add(new BasicNameValuePair(ApplicationConstants.SHARED_DATA_QUERY_PARAM, sharedDataKey));
 
             Map<String, String> responseMap = wookieClient.makePostRequest(API_URL, postQueryParams);
 
@@ -90,7 +91,7 @@ public class WookieServiceImpl implements WookieService {
         final String API_URL = "/widgetinstances";
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                configurationsService.getApiKey());
     }
 
     @Override
@@ -99,7 +100,7 @@ public class WookieServiceImpl implements WookieService {
         JSONObject responseJSON = null;
         try {
             WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                    configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                    configurationsService.getApiKey());
             Map<String, String> responseMap = wookieClient.makeGetRequest(API_URL, "");
             responseJSON = getResponseJson(responseMap);
         } catch (Exception e) {
@@ -113,7 +114,7 @@ public class WookieServiceImpl implements WookieService {
         final String API_URL = "/widgets";
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                configurationsService.getApiKey());
 
     }
 
@@ -122,7 +123,7 @@ public class WookieServiceImpl implements WookieService {
         final String API_URL = "/widgets";
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                configurationsService.getApiKey());
 
     }
 
@@ -131,7 +132,7 @@ public class WookieServiceImpl implements WookieService {
         final String API_URL = "/widgets";
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                configurationsService.getApiKey());
 
     }
 
@@ -140,21 +141,21 @@ public class WookieServiceImpl implements WookieService {
         final String API_URL = "/participants";
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                configurationsService.getApiKey());
 
 
     }
 
     @Override
     public JSONObject addParticipants(final String participantID, final String participantDisplayName, final String participantThumbnailUrl,
-                                final String widgetId, final String userId, final String participantRole, final String instanceId) {
+                                      final String widgetId, final String userId, final String participantRole, final String instanceId) {
         final String API_URL = "/participants";
         JSONObject responseJSON = null;
 
         LOGGER.info(" Wookie service : addParticipants method called ");
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                configurationsService.getApiKey());
 
         List<NameValuePair> postQueryParams = new ArrayList<NameValuePair>();
 
@@ -178,7 +179,7 @@ public class WookieServiceImpl implements WookieService {
         final String API_URL = "/participants";
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                configurationsService.getApiKey());
 
     }
 
@@ -187,7 +188,7 @@ public class WookieServiceImpl implements WookieService {
         final String API_URL = "/properties";
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                configurationsService.getApiKey());
 
     }
 
@@ -196,7 +197,7 @@ public class WookieServiceImpl implements WookieService {
         final String API_URL = "/properties";
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                configurationsService.getApiKey());
 
     }
 
@@ -205,7 +206,7 @@ public class WookieServiceImpl implements WookieService {
         final String API_URL = "/properties";
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                configurationsService.getApiKey());
 
     }
 
@@ -214,7 +215,7 @@ public class WookieServiceImpl implements WookieService {
         final String API_URL = "/properties";
 
         WookieClient wookieClient = new WookieClient(configurationsService.getWookieServerEndPoint(),
-                configurationsService.getApiKey(), configurationsService.getSharedDataKey());
+                configurationsService.getApiKey());
 
     }
 

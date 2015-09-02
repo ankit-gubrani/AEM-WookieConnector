@@ -92,9 +92,10 @@ public class AEMWookieConnectorServlet extends SlingAllMethodsServlet {
                 } else if (firstSelector.equals(ApplicationConstants.WIDGET_INSTANCES_SELECTOR)) {
                     String userId = request.getParameter(ApplicationConstants.USER_ID_QUERY_PARAM);
                     String widgetId = request.getParameter(ApplicationConstants.WIDGET_ID_QUERY_PARAM);
+                    String sharedDataKey = request.getParameter(ApplicationConstants.SHARED_DATA_QUERY_PARAM);
 
                     if(!"".equals(userId) && !"".equals(widgetId)) {
-                        responseJsonObject = wookieService.createWidgetInstance(userId, widgetId);
+                        responseJsonObject = wookieService.createWidgetInstance(userId, widgetId,sharedDataKey);
                     } else {
                         responseJsonObject.put(ApplicationConstants.RESPONSE_JSON_STATUS, "Please provide required query params : userid and widgetid");
                     }

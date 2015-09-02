@@ -21,7 +21,7 @@ public interface WookieService {
      *  This method create a new widget instance using the given parameters.
      *  Request Method : POST  |  API_URI : widgetinstances
      */
-    public JSONObject createWidgetInstance(String userId, String widgetId);
+    public JSONObject createWidgetInstance(String userId, String widgetId, String sharedDataKey);
 
     /**
      * This method allows to either stop, resume, or clone an instance, depending on the content of the action parameter.

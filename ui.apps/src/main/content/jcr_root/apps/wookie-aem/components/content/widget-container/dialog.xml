@@ -17,6 +17,14 @@
                             name="./title"
                             xtype="textfield"
                             />
+                    <isSharedDataKeyRequired
+                            jcr:primaryType="cq:Widget"
+                            fieldLabel="Is Shared key required "
+                            name="./sharedDataKey"
+                            xtype="selection"
+                            type="checkbox"
+                            fieldDescription="Check this box if user should be prompted to provide the 'Shared Key'"
+                            />
                     <selectuser
                             jcr:primaryType="cq:Widget"
                             fieldLabel="Select User"
