@@ -1,5 +1,5 @@
 /**
- *
+ * AEM-Wookie Connector tool
  * Copyright 2015 Ankit Gubrani & Rima mittal
  *
  **/

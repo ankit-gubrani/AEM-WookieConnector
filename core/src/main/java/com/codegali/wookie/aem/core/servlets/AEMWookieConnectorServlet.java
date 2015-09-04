@@ -1,5 +1,6 @@
 /**
  *
+ * AEM-Wookie Connector tool
  * Copyright 2015 Ankit Gubrani & Rima mittal
  *
  **/
@@ -11,6 +12,7 @@ import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.Service;
 import org.apache.felix.scr.annotations.sling.SlingServlet;
+import org.apache.jackrabbit.api.security.user.User;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
@@ -18,6 +20,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.jcr.RepositoryException;
+import javax.jcr.UnsupportedRepositoryOperationException;
 
 /**
  * Servlet that returns response from Wookie server. Different selectors are exposed to perform
@@ -40,7 +45,6 @@ public class AEMWookieConnectorServlet extends SlingAllMethodsServlet {
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws javax.servlet.ServletException, java.io.IOException {
         JSONObject responseJsonObject = new JSONObject();
         if (request.getRequestPathInfo().getSelectors().length > 0) {
-
             String firstSelector = request.getRequestPathInfo().getSelectors()[0];
 
             if (firstSelector.equals(ApplicationConstants.WIDGETS_SELECTOR)) {
@@ -82,7 +86,6 @@ public class AEMWookieConnectorServlet extends SlingAllMethodsServlet {
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws javax.servlet.ServletException, java.io.IOException {
         JSONObject responseJsonObject = new JSONObject();
         try {
-            JSONObject responseObject = new JSONObject();
             if (request.getRequestPathInfo().getSelectors().length > 0) {
 
                 String firstSelector = request.getRequestPathInfo().getSelectors()[0];
@@ -94,21 +97,33 @@ public class AEMWookieConnectorServlet extends SlingAllMethodsServlet {
                     String widgetId = request.getParameter(ApplicationConstants.WIDGET_ID_QUERY_PARAM);
                     String sharedDataKey = request.getParameter(ApplicationConstants.SHARED_DATA_QUERY_PARAM);
 
+                    if(userId == null || userId.equals("")) {
+                        User user = request.getResourceResolver().adaptTo(User.class);
+                        userId = user.getID();
+                    }
+
                     if(!"".equals(userId) && !"".equals(widgetId)) {
                         responseJsonObject = wookieService.createWidgetInstance(userId, widgetId,sharedDataKey);
                     } else {
                         responseJsonObject.put(ApplicationConstants.RESPONSE_JSON_STATUS, "Please provide required query params : userid and widgetid");
                     }
-
                 } else if (firstSelector.equals(ApplicationConstants.PARTICIPANT_SELECTOR)) {
                     //Adding given user as a participant for a widget instance (Widget ID required).
-                    String participantId = request.getParameter(ApplicationConstants.PARTICIPANT_ID_QUERY_PARAM);
-                    String participantDisplayName = request.getParameter(ApplicationConstants.PARTICIPANT_DISP_NAME_QUERY_PARAM);
                     String participantThumbnailUrl = request.getParameter(ApplicationConstants.PARTICIPANT_THUMBNAIL_URL_QUERY_PARAM);
                     String widgetId = request.getParameter(ApplicationConstants.WIDGET_ID_QUERY_PARAM);
                     String userId = request.getParameter(ApplicationConstants.USER_ID_QUERY_PARAM);
                     String participantRole = request.getParameter(ApplicationConstants.PARTICIPANT_ROLE_QUERY_PARAM);
                     String instanceId = request.getParameter(ApplicationConstants.WIDGET_INSTANCE_ID_KEY);
+
+                    if(userId == null || userId.equals("")) {
+                        User user = request.getResourceResolver().adaptTo(User.class);
+                        userId = user.getID();
+                        LOGGER.info("User ID not provided as query param here is the new USER ID : ", userId);
+                    }
+
+                    //Setting participantId & participantDisplayName same as User ID
+                    String participantId = userId;
+                    String participantDisplayName = userId;
 
                     if(participantId != null && !"".equals(participantId) && participantDisplayName != null &&
                             !"".equals(participantDisplayName) && participantThumbnailUrl != null && !"".equals(participantThumbnailUrl)
@@ -129,10 +144,14 @@ public class AEMWookieConnectorServlet extends SlingAllMethodsServlet {
                     response.getWriter().println(responseJsonObject);
                 }
             } else {
-                responseObject.put(ApplicationConstants.RESPONSE_JSON_STATUS, "No selector provided");
+                responseJsonObject.put(ApplicationConstants.RESPONSE_JSON_STATUS, "No selector provided");
             }
         } catch (JSONException e) {
             LOGGER.error("JSONException occurred in ");
+        } catch (UnsupportedRepositoryOperationException e) {
+            LOGGER.error("UnsupportedRepositoryOperationException ", e);
+        } catch (RepositoryException e) {
+            LOGGER.error("RepositoryException occured ", e);
         }
     }
 }

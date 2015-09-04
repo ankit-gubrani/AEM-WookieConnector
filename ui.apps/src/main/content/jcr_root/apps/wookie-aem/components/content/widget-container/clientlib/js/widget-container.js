@@ -1,4 +1,5 @@
 /*
+ * AEM-Wookie Connector tool
  * Copyright 2015 Ankit Gubrani
  * @license
  */
@@ -15,15 +16,20 @@
 
             if (submitSharedKeyBtn.length > 0) {
                 submitSharedKeyBtn.on('click', function () {
-                    registerWidget(widgetId, userId, sharedKeyText.val());
-                    //Hiding the submit button
-                    submitSharedKeyBtn.addClass('no-display');
-                    sharedKeyText.addClass('no-display');
+                    item.find('.error').text("");
+                    if(sharedKeyText.val() == '') {
+                        item.find('.error').text("Please provide a Shared Key! Blank not allowed");
+                    } else {
+                        registerWidget(widgetId, userId, sharedKeyText.val());
+                        //Hiding the submit button
+                        submitSharedKeyBtn.addClass('no-display');
+                        sharedKeyText.addClass('no-display');
 
-                    //Showing the edit button
-                    sharedKeyDiv.removeClass('no-display');
-                    editBtn.removeClass('no-display');
-                    sharedKeyDiv.text("Shared Data Key : " + sharedKeyText.val());
+                        //Showing the edit button
+                        sharedKeyDiv.removeClass('no-display');
+                        editBtn.removeClass('no-display');
+                        sharedKeyDiv.text("Shared Data Key : " + sharedKeyText.val());
+                    }
                 });
             } else {
                 registerWidget(widgetId, userId, '');
@@ -59,8 +65,8 @@
                 $.ajax({
                     method: "POST",
                     url: "/bin/aem-wookie.participants.html",
-                    data: {'widgetid': widgetId, 'userid': userId, 'participant_display_name': userId,
-                        'participant_id': userId, 'participant_thumbnail_url': '/wookie/deploy/wookie.apache.org/widgets/simplechat/default_thumbnail.png',
+                    data: {'widgetid': widgetId, 'userid': userId,
+                        'participant_thumbnail_url': '/wookie/deploy/wookie.apache.org/widgets/simplechat/default_thumbnail.png',
                         participant_role: 'host', 'id_key': widgetInstance.instanceId}
                 }).done(function () {
                         var iframe = item.find('.widget_frame');

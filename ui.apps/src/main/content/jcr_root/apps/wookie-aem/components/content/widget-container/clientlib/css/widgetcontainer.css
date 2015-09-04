@@ -1,3 +1,8 @@
+/*
+ * AEM-Wookie Connector tool
+ * Copyright 2015 Ankit Gubrani
+ * @license
+ */
 .shared-data-key input[type="text"] {
     padding: 10px;
     border: none;
@@ -53,4 +58,12 @@
     font-weight: bold;
     line-height: 30px;
     height: 30px;
+}
+
+.error {
+    clear: both;
+    margin-top: 12px;
+    margin-left: 12px;
+    color: red;
+    font-weight: bold;
 }

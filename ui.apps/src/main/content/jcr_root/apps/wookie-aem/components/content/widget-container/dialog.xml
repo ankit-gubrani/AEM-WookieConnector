@@ -32,6 +32,8 @@
                             name="./userid"
                             xtype="selection"
                             type="select"
+                            fieldDescription="This is not a required field! This is provided for demo proposes ,
+                            if user is not selected then widget will be registered as Logged In user as participant."
                             />
                     <widgetid
                             jcr:primaryType="cq:Widget"

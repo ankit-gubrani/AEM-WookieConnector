@@ -30,9 +30,11 @@
             <logo
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wookie-aem/components/structure/logo"
-                absParent="2">
-                <image/>
-            </logo>
+                absParent="2"
+                imageReference="/content/dam/wookie-aem/aemhub_2015_v7.png"
+                imageRotate="0"
+                maxWidth="165"
+                    />
         </page>
     </jcr:content>
 </jcr:root>

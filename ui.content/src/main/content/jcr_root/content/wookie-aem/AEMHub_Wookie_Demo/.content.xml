@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2015-09-04T15:22:41.560+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/apps/wookie-aem/templates/page-home"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="AEMHub_Wookie_Demo"
+        sling:resourceType="wookie-aem/components/structure/page">
+        <logo
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wookie-aem/components/structure/logo"/>
+        <title
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wookie-aem/components/content/title"/>
+        <topnav
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wookie-aem/components/structure/topnav"/>
+        <par
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wcm/foundation/components/parsys">
+            <text
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wookie-aem/components/content/text"
+                text="&lt;p>This is a home page&lt;/p>"
+                textIsRich="true"/>
+            <text_0
+                jcr:created="{Date}2015-09-04T15:15:18.240+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2015-09-04T15:20:50.500+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="foundation/components/text"
+                text="&lt;p style=&quot;text-align: center;&quot;>Demo Page for&lt;b> AEM-Wookie Connector tool&lt;/b>&lt;/p>&#xa;"
+                textIsRich="true"/>
+            <image
+                jcr:created="{Date}2015-09-04T15:22:13.076+05:30"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2015-09-04T15:22:41.559+05:30"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="foundation/components/image"
+                fileReference="/content/dam/wookie-aem/aem-wookie_connector1.png"
+                imageMap="\[rect(128,34,186,92)&quot;https://github.com/ankit-gubrani/AEM-WookieConnector&quot;||&quot;Github Code&quot;]"
+                imageRotate="0"/>
+        </par>
+    </jcr:content>
+</jcr:root>

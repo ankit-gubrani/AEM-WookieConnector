@@ -1,8 +1,9 @@
 <%--
+  AEM-Wookie Connector tool
+
+  Copyright 2015 Ankit Gubrani
 
   Wookie Widget Container component.
-
-  Wookie Widget Container
 
 --%><%
 %>
@@ -28,18 +29,11 @@
 
 <div id="${uuid}"></div>
 <h2>${properties.title}</h2>
+<c:if test="${empty widgetId}">
+    <div>Please select a widget</div>
+</c:if>
 <c:choose>
-    <c:when test="${empty widgetId}">
-        <div>Please select a widget</div>
-    </c:when>
-    <c:when test="${empty userId}">
-        <div>Please select a user</div>
-    </c:when>
-    <c:otherwise>
-    </c:otherwise>
-</c:choose>
-<c:choose>
-    <c:when test="${not empty widgetId && not empty userId}">
+    <c:when test="${not empty widgetId}">
         <div class="result">
             <c:if test="${properties.sharedDataKey}">
                 <div class="shared-data-key">
@@ -47,6 +41,7 @@
                     <input type="button" class="submit-button button" value="Submit"/>
                     <div class="shared-key-text no-display"></div>
                     <input type="button" class="edit-button button no-display" value="Edit"/>
+                    <div class="error"></div>
                 </div>
                 <div style="clear:both;">&nbsp;</div>
             </c:if>
